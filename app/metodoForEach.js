@@ -1,5 +1,8 @@
 function ExibirLivrosTela(listaDeLivros) {
 
+  elementoParaInserirLivros.innerHTML = '';
+  //aqui quando um evento de filtro foir cliclado colocara apenas os livros filtrados e evitara  que mais de um inform~ção apareça na tela.
+
     listaDeLivros.forEach(livro => {
 
         elementoParaInserirLivros.innerHTML += `   <div class="livro">
