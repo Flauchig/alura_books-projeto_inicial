@@ -1,4 +1,4 @@
-function aplicarDesconto(livros ){
+function aplicarDesconto(livros){
     const desconto  = 0.3;
 
     livorsComDesconto  = livros.map(livro => {

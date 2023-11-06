@@ -1,17 +1,48 @@
 const botoes = document.querySelectorAll('.btn'); 
 
-botoes.forEach(btn =>btn.addEventListener('click', filtrarLivros ));
+botoes.forEach(btn => btn.addEventListener('click', filtrarLivros ));
 
 
 function filtrarLivros(){
     const elementoBtn  = document.getElementById(this.id);
     const categoria =  elementoBtn.value
 
-    let livrosFiltrados = livros.filter(livro => livro.categoria == categoria );
+    let livrosFiltrados = categoria == 'disponivel' ? FiltrarPorDisponibilidade() : filtrarPorCategoria(categoria)
+
+    // foi aplicadao um filtro  buscando a quantidade dos livros para aplicar o botao dos livros desponiveis. 
 
     ExibirLivrosTela(livrosFiltrados);
 
+
     
+    if (categoria == 'disponivel'){
+
+    exibirValorTotalDeLivrosDisponiveis();
+
+
+    }
+
+
+    
+}
+
+
+function filtrarPorCategoria(categoria) {
+    return livros.filter(livro => livro.categoria == categoria);
+}
+
+function FiltrarPorDisponibilidade() {
+    return livros.filter(livro => livro.quantidade > 0);
+}
+
+function  exibirValorTotalDeLivrosDisponiveis(){
+
+    valorTotalDeLivrosDisponiveis.innerHTML = `  <div class="livros__disponiveis">
+    <p>Todos os livros disponíveis por R$ <span id="valor">299,00</span></p>
+  </div>
+</section>`
+
+
 }
 
 // foi usado um forEach para buscar cada botão e quano clicado ele ira executar um filtro
